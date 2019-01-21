@@ -59,11 +59,11 @@ resource "aws_lb_target_group" "p8s_alertmanager" {
 }
 
 output "p8s_grafana_target_group_z1" {
-  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 0}"
+  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 0)}"
 }
 
 output "p8s_grafana_target_group_z2" {
-  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 1}"
+  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 1)}"
 }
 
 resource "aws_lb_target_group" "p8s_grafana" {
