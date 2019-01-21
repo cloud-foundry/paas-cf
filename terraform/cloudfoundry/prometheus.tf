@@ -39,11 +39,11 @@ resource "aws_security_group" "prometheus-lb" {
 }
 
 output "p8s_alertmanager_target_group_z1" {
-  value = "${aws_lb_target_group.p8s_alertmanager[0].name}"
+  value = "${element(aws_lb_target_group.p8s_alertmanager.*.name, 0)}"
 }
 
 output "p8s_alertmanager_target_group_z2" {
-  value = "${aws_lb_target_group.p8s_alertmanager[1].name}"
+  value = "${element(aws_lb_target_group.p8s_alertmanager.*.name, 1)}"
 }
 
 resource "aws_lb_target_group" "p8s_alertmanager" {
@@ -59,11 +59,11 @@ resource "aws_lb_target_group" "p8s_alertmanager" {
 }
 
 output "p8s_grafana_target_group_z1" {
-  value = "${aws_lb_target_group.p8s_grafana[0].name}"
+  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 0}"
 }
 
 output "p8s_grafana_target_group_z2" {
-  value = "${aws_lb_target_group.p8s_grafana[1].name}"
+  value = "${element(aws_lb_target_group.p8s_grafana.*.name, 1}"
 }
 
 resource "aws_lb_target_group" "p8s_grafana" {
@@ -79,11 +79,11 @@ resource "aws_lb_target_group" "p8s_grafana" {
 }
 
 output "p8s_prometheus_target_group_z1" {
-  value = "${aws_lb_target_group.p8s_prometheus[0].name}"
+  value = "${element(aws_lb_target_group.p8s_prometheus.*.name, 0)}"
 }
 
 output "p8s_prometheus_target_group_z2" {
-  value = "${aws_lb_target_group.p8s_prometheus[1].name}"
+  value = "${element(aws_lb_target_group.p8s_prometheus.*.name, 1)}"
 }
 
 resource "aws_lb_target_group" "p8s_prometheus" {
