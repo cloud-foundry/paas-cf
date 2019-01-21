@@ -138,6 +138,6 @@ variable "apps_dns_zone_name" {
 }
 
 variable "prometheus_azs" {
-  description: "Availability zones for Prometheus instances"
-  default: ["z1", "z2"]
+  description = "Availability zones for Prometheus instances"
+  default = ["z1", "z2"]
 }
