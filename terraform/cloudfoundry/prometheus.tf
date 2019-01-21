@@ -119,7 +119,7 @@ resource "aws_lb_listener" "prometheus" {
 resource "aws_lb_listener_rule" "p8s_alertmanager" {
   count        = "${length(var.prometheus_azs)}"
   listener_arn = "${aws_lb_listener.prometheus.arn}"
-  priority     = {count.index+1}
+  priority     = "${count.index+1}"
 
   action {
     type             = "forward"
@@ -135,7 +135,7 @@ resource "aws_lb_listener_rule" "p8s_alertmanager" {
 resource "aws_lb_listener_rule" "p8s_grafana" {
   count        = "${length(var.prometheus_azs)}"
   listener_arn = "${aws_lb_listener.prometheus.arn}"
-  priority     = {count.index+3}
+  priority     = "${count.index+3}"
 
   action {
     type             = "forward"
@@ -151,7 +151,7 @@ resource "aws_lb_listener_rule" "p8s_grafana" {
 resource "aws_lb_listener_rule" "p8s_prometheus" {
   count        = "${length(var.prometheus_azs)}"
   listener_arn = "${aws_lb_listener.prometheus.arn}"
-  priority     = {count.index+5}
+  priority     = "${count.index+5}"
 
   action {
     type             = "forward"
