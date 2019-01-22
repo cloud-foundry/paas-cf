@@ -1412,11 +1412,11 @@ jobs:
               - -c
               - |
                 . ./config/config.sh
+                AZ_COUNT=2
+                if [ "${SLIM_DEV_DEPLOYMENT}" = "true" ]; then
+                  AZ_COUNT=1
+                fi
                 for f in "$(pwd)/paas-cf/manifests/prometheus/dashboards.d/"*.json; do
-                  AZ_COUNT=2
-                  if [ "${SLIM_DEV_DEPLOYMENT}" = "true" ]; then
-                    AZ_COUNT=1
-                  fi
                   for az in `seq 1 $AZ_COUNT`; do
                     sed "s/__SYSTEM_DNS_ZONE_NAME__/${SYSTEM_DNS_ZONE_NAME}/g" "${f}" \
                     | sed "s/__DEPLOY_ENV__/${DEPLOY_ENV}/g" \
