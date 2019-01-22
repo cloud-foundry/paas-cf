@@ -16,7 +16,8 @@
     vm_extensions:
       - prometheus_lb_z1
     jobs:
-      - name: nginx
+      - &nginx_job
+        name: nginx
         release: prometheus
         properties:
           nginx:
