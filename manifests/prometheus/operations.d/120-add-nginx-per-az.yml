@@ -9,10 +9,10 @@
     azs:
       - z1
     instances: 1
-    vm_type: default
+    vm_type: nano
     stemcell: default
     networks:
-      - name: default
+      - name: cf
     vm_extensions:
       - prometheus_lb_z1
     jobs:
