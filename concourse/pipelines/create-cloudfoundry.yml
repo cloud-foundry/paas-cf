@@ -1239,6 +1239,7 @@ jobs:
             BOSH_URL: https://((bosh_fqdn)):25555
             METRON_DEPLOYMENT_NAME: ((deploy_env))
             ENABLE_ALERT_EMAILS: ((ENABLE_ALERT_EMAILS))
+            SLIM_DEV_DEPLOYMENT: ((slim_dev_deployment))
           run:
             path: sh
             args:
