@@ -42,3 +42,9 @@
       - z2
     vm_extensions:
       - prometheus_lb_z2
+
+#Grafana only reads the auth users from the nginx links, so only specifying a single nginx instance group
+- type: replace
+  path: /instance_groups/name=grafana/consumes?/nginx
+  value:
+    from: nginx_z1
