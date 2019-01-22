@@ -43,6 +43,6 @@
     vm_extensions:
       - prometheus_lb_z2
     jobs:
-      - name: grafana
+      - name: nginx
         provides:
           nginx: nil
