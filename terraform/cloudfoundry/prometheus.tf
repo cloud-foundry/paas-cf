@@ -56,6 +56,10 @@ resource "aws_lb_target_group" "p8s_alertmanager" {
   health_check {
     matcher = "200-499"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 output "p8s_grafana_target_group_z1" {
@@ -76,6 +80,10 @@ resource "aws_lb_target_group" "p8s_grafana" {
   health_check {
     matcher = "200-499"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 output "p8s_prometheus_target_group_z1" {
@@ -95,6 +103,10 @@ resource "aws_lb_target_group" "p8s_prometheus" {
 
   health_check {
     matcher = "200-499"
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
