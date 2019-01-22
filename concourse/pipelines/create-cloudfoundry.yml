@@ -1411,14 +1411,16 @@ jobs:
               - |
                 . ./config/config.sh
                 for f in "$(pwd)/paas-cf/manifests/prometheus/dashboards.d/"*.json; do
-                  sed "s/__SYSTEM_DNS_ZONE_NAME__/${SYSTEM_DNS_ZONE_NAME}/g" "${f}" \
-                  | sed "s/__DEPLOY_ENV__/${DEPLOY_ENV}/g" \
-                  | curl "https://grafana.${SYSTEM_DNS_ZONE_NAME}/api/dashboards/db" \
-                    --user "admin:$GRAFANA_PASS" \
-                    --header 'Content-Type: application/json' \
-                    --data "@-" \
-                    --fail \
-                    --include
+                  for az in 1 2; do
+                    sed "s/__SYSTEM_DNS_ZONE_NAME__/${SYSTEM_DNS_ZONE_NAME}/g" "${f}" \
+                    | sed "s/__DEPLOY_ENV__/${DEPLOY_ENV}/g" \
+                    | curl "https://grafana-${az}.${SYSTEM_DNS_ZONE_NAME}/api/dashboards/db" \
+                      --user "admin:$GRAFANA_PASS" \
+                      --header 'Content-Type: application/json' \
+                      --data "@-" \
+                      --fail \
+                      --include
+                  done;
                 done
 
   - name: post-deploy
