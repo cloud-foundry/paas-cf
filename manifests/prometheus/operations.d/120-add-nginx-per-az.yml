@@ -42,8 +42,7 @@
       - z2
     vm_extensions:
       - prometheus_lb_z2
-
-# Adding separate operation for readability
-- type: replace
-  path: /instance_groups/name=nginx_z2/jobs/name=nginx/provides?/nginx
-  value: nil
+    jobs:
+      - <<: *nginx_job
+        provides:
+          nginx: nil
