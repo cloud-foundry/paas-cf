@@ -10,7 +10,7 @@ WORKDIR=${WORKDIR:-.}
 opsfile_args=""
 
 if [ "${SLIM_DEV_DEPLOYMENT-}" = "true" ]; then
-  opsfile_args="$opsfile_args -o ${PAAS_CF_DIR}/manifests/prometheus/operations/scale-down-dev.yml"
+  opsfile_args="$opsfile_args -o ${PAAS_CF_DIR}/manifests/prometheus/operations/scale-down-dev.yml "
 fi
 
 for i in "${PAAS_CF_DIR}"/manifests/prometheus/operations.d/*.yml; do
